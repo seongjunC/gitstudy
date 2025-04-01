@@ -18,7 +18,7 @@ namespace textRPGEX.Scenes
         public override void Choice()
         {
             Console.WriteLine("1. 수상한 구슬을 산다.");
-            Console.WriteLine("2. 주변에 소문은 없는지 물어본다.");
+            Console.WriteLine("2. 신발을 구매한다.");
             Console.WriteLine("3. 상인을 위협한다.");
             Console.WriteLine("4. 마을로 돌아갑니다.");
         }
@@ -27,6 +27,12 @@ namespace textRPGEX.Scenes
         {
             switch (input)
             {
+                case ConsoleKey.D2:
+                    Console.WriteLine("당신은 발걸음이 빨라진 것을 느낍니다.");
+                    Console.WriteLine("이걸로 더욱 많은 곳을 다닐 수 있겠지요...");
+                    Game.Player.Speed += 3;
+                    Console.WriteLine("플레이어 스탯 상승! 속도 : {0}", Game.Player.Speed);
+                    break;
                 case ConsoleKey.D3:
                     Console.WriteLine("당신의 위협을 본 상인은 총을 꺼내들었습니다.");
                     Console.WriteLine("당신은 그것을 보자 몸을 틀었지만 직격으로 맞았습니다.");

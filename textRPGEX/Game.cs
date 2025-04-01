@@ -13,6 +13,10 @@ namespace textRPGEX
         private static bool gameOver;
         private static Dictionary<string, Scene> sceneDic;
         private static Scene curScene;
+
+        private static Player player;
+        public static Player Player { get { return player; } }
+
         // 게임에 필요한 기능들
 
         //1. 게임시작
@@ -37,9 +41,12 @@ namespace textRPGEX
         {
             while (!gameOver) {
                 curScene.Render();
+                Console.WriteLine();
                 curScene.Choice();
                 curScene.Input();
+                Console.WriteLine();
                 curScene.Result();
+                Console.WriteLine();
                 curScene.Wait();
                 curScene.Next();
             }
@@ -59,6 +66,14 @@ namespace textRPGEX
             Console.WriteLine(reason);
 
             gameOver = true;
+        }
+        public static void PrintInfo()
+        {
+            Console.WriteLine("*************************");
+            Console.WriteLine("플레이어");
+            Console.WriteLine(" 힘 : {0}\t 속도 : {1}", player.Power, player.Speed);
+            Console.WriteLine("*************************");
+            Console.WriteLine();
         }
     }
 }

@@ -18,6 +18,13 @@ namespace textRPGEX.Scenes
             Console.WriteLine("당신은 어떤 행동을 하시겠습니까?");
         }
 
+        public override void Choice()
+        {
+            Console.WriteLine("1. 상인에게 간다.");
+            Console.WriteLine("2. [속도] 멀리있는 수상한 남성을 주시한다.");
+            Console.WriteLine("3. 일단 파밍이지, 필드로 나간다.");
+        }
+
         public override void Result()
         {
             switch (input)
@@ -27,9 +34,18 @@ namespace textRPGEX.Scenes
                     break;
                 case ConsoleKey.D2:
                     Console.WriteLine("당신은 수상한 사람에 집중하고 있었습니다.");
-                    Console.WriteLine("하지만 집중하는 동안 소매치기가 다가오는 것을 몰랐습니다.");
-                    Console.WriteLine("당신이 집중하고 있는 틈을 타 소매치기가 당신을 찌르고 물건을 훔쳐갑니다.");
-                    Console.WriteLine("당신의 시야가 서서히 흐려집니다.");
+                    Console.WriteLine("그런데 집중하는 동안 소매치기가 다가오는 것을 몰랐습니다.");
+                    if (Game.Player.Speed >= 10)
+                    {
+                        Console.WriteLine("하지만 순발력으로 당신은 피했습니다.");
+                        Console.WriteLine("찌르는데 실패한 소매치기가 달아납니다.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("하지만 집중하는 동안 소매치기가 다가오는 것을 몰랐습니다.");
+                        Console.WriteLine("당신이 집중하고 있는 틈을 타 소매치기가 당신을 찌르고 물건을 훔쳐갑니다.");
+                        Console.WriteLine("당신의 시야가 서서히 흐려집니다.");
+                    }
                     break;
                 case ConsoleKey.D3:
                     Console.WriteLine("필드로 나갑니다.");
@@ -40,12 +56,6 @@ namespace textRPGEX.Scenes
             }
         }
 
-        public override void Choice()
-        {
-            Console.WriteLine("1. 상인에게 간다.");
-            Console.WriteLine("2. 멀리있는 수상한 남성을 주시한다.");
-            Console.WriteLine("3. 일단 파밍이지, 필드로 나간다.");
-        }
 
         public override void Wait()
         {
@@ -60,7 +70,15 @@ namespace textRPGEX.Scenes
                     Game.ChangeScene("Shop");
                     break;
                 case ConsoleKey.D2:
-                    Game.GameOver(" 너무 높은 집중력...");
+                    if(Game.Player.Speed >= 10)
+                    {
+                        Game.ChangeScene("Town");
+                    }
+                    else 
+                    { 
+                        Game.GameOver(" 너무 높은 집중력..."); 
+                    }
+                    
                     break;
             }
             

@@ -36,7 +36,12 @@ namespace textRPGEX.Scenes
         }
         public override void Next()
         {
-            // TODO : 씬 전환 구현
+            switch (input)
+            {
+                case ConsoleKey.D1:
+                    Game.ChangeScene("Town");
+                    break;
+            }
         }
 
     }

@@ -82,20 +82,19 @@ namespace _250328
                     big.Push(-1);
                 }
             }
+
             while(small.Count > 0)
             {
                 smallpairs.Add(small.Pop());
             }
             if(smallpairs.Count % 2 == 1)
             {
-                Console.WriteLine("small odd");
                 return false;
             }
             for (int i = 0; i < smallpairs.Count / 2; i++)
             {
                 if (smallpairs[2*i] == 1 || smallpairs[2*i+1] == -1)
                 {
-                    Console.WriteLine("small not, {0}, {1},{2}", smallpairs[i], smallpairs[smallpairs.Count - i - 1],i);
                     return false;
                 }
             }
@@ -117,15 +116,12 @@ namespace _250328
             {
                 if (middlepairs[2 * i] == 1 || middlepairs[2 * i + 1] == -1)
                 {
-                    Console.WriteLine("middle not");
-                    Console.WriteLine("small not, {0}, {1},{2}", middlepairs[i], middlepairs[middlepairs.Count - i - 1], i);
                     return false;
                 }
             }
 
             while (big.Count > 0)
             {
-                Console.WriteLine("big odd");
                 pairs.Add(big.Pop());
             }
             if (pairs.Count % 2 == 1)
@@ -136,7 +132,6 @@ namespace _250328
             {
                 if (pairs[2 * i] == 1 || pairs[2 * i + 1] == -1)
                 {
-                    Console.WriteLine("big not");
                     return false;
                 }
             }

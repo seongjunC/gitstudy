@@ -11,7 +11,7 @@ namespace textRPGEX
         protected ConsoleKey input;
         public abstract void Render();
 
-        public abstract void SelectChoice();
+        public abstract void Choice();
 
         public void Input()
         {

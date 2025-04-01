@@ -8,20 +8,14 @@ namespace textRPGEX.Scenes
 {
     internal class TitleScene : Scene
     {
-        ConsoleKey inpyt
-        public override void Input()
-        {
-            Input = Console.ReadKey(true).Key;
-        }
 
-        public override void Next()
-        {
-            throw new NotImplementedException();
-        }
 
         public override void Render()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("*************************");
+            Console.WriteLine("*      TEXT RPG         *");
+            Console.WriteLine("*************************");
+            Console.WriteLine();
         }
 
         public override void Result()
@@ -29,14 +23,21 @@ namespace textRPGEX.Scenes
             throw new NotImplementedException();
         }
 
-        public override void SelectChoice()
+        public override void Choice()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("1. 게임 시작");
+            Console.WriteLine("2. 불러오기");// TODO : 불러오기 구현
+            Console.WriteLine("3. 게임 종료");
         }
 
         public override void Wait()
         {
             throw new NotImplementedException();
         }
+        public override void Next()
+        {
+            // TODO : 씬 전환 구현
+        }
+
     }
 }

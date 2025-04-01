@@ -21,6 +21,8 @@ namespace textRPGEX
             // 게임 시작시에 필요한 작업들
             sceneDic = new Dictionary<string, Scene>();
             sceneDic.Add("Title", new TitleScene());
+            sceneDic.Add("Town", new TownScene());
+            sceneDic.Add("Shop", new ShopScene());
 
             curScene = sceneDic["Title"] ;
         }
@@ -37,6 +39,7 @@ namespace textRPGEX
                 curScene.Render();
                 curScene.Choice();
                 curScene.Input();
+                curScene.Result();
                 curScene.Wait();
                 curScene.Next();
             }
@@ -45,6 +48,17 @@ namespace textRPGEX
         public static void ChangeScene(string scenename)
         {
             curScene = sceneDic[scenename];
+        }
+        public static void GameOver(string reason)
+        {
+            Console.Clear();
+            Console.WriteLine("*************************");
+            Console.WriteLine("*      GAME OVER        *");
+            Console.WriteLine("*************************");
+            Console.WriteLine();
+            Console.WriteLine(reason);
+
+            gameOver = true;
         }
     }
 }

@@ -33,10 +33,18 @@ namespace textRPGEX
         // 3. 게임 동작 
         public static void Run()
         {
-            while (!gameOver) { 
-                
+            while (!gameOver) {
+                curScene.Render();
+                curScene.Choice();
+                curScene.Input();
+                curScene.Wait();
+                curScene.Next();
             }
 
+        }
+        public static void ChangeScene(string scenename)
+        {
+            curScene = sceneDic[scenename];
         }
     }
 }
